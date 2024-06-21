@@ -1,0 +1,17 @@
+<launch>
+    <rosparam param="ticks_meter">360720</rosparam>
+
+    <node pkg = "differential_drive" type = "diff_tf.py" name = "diff_tf" output = "screen">
+        <rosparam param="ticks_meter">360720</rosparam>
+        <rosparam param = "base_width">0.54</rosparam>
+    </node>
+
+    <!-- <node pkg = "rosserial_python" type = "serial_node.py" name="serial_node">
+        <param name="port" value="/dev/ttyACM0"/>
+    </node> -->
+
+    <node pkg="rover" type="vel_calc_node.py" name="velocity_calculator_node" output="screen">
+        <param name="wheel_separation" type="double" value="0.27"/> <!-- Adjust as needed -->
+    </node>
+
+</launch> 
